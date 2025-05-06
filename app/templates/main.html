@@ -3,40 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <title>AI-прорицатель</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    {% block content %}{% endblock %}
+  <header class="hero">
+    <!-- SVG фон -->
+    <svg class="hero-bg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="#818cf8" fill-opacity="1" d="M0,160L40,170.7C80,181,160,203,240,202.7C320,203,400,181,480,165.3C560,149,640,139,720,160C800,181,880,235,960,229.3C1040,224,1120,160,1200,128C1280,96,1360,96,1400,96L1440,96L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path>
+    </svg>
+    
+    <div class="hero-content animate-fade-in-up">
+      <h1>AI-Prophet</h1>
+      <p class="hero-subtitle">Твой персональный ИИ-прорицатель — узнай, куда ведёт твой путь жизни.</p>
+      <a href="#how-it-works" class="btn hero-btn">
+        Как это работает
+        <i data-lucide="arrow-down" class="inline-icon"></i>
+      </a>
+    </div>
+  </header>
+  
+  <!-- Подключение Lucide через CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<section class="how-it-works text-center py-16 px-4 bg-gray-50">
+  <h2 class="text-4xl font-bold mb-10 text-gray-800">Как работает AI-прорицатель</h2>
+
+  <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 text-left">
+    <!-- Шаг 1 -->
+    <div class="step-card p-6 bg-white rounded-2xl shadow-lg transform transition hover:-translate-y-2 hover:shadow-xl duration-300">
+      <div class="mb-4 text-indigo-600">
+        <i data-lucide="edit" class="w-8 h-8"></i>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">1. Заполни анкету</h3>
+      <p class="text-gray-600">Ответь на вопросы о возрасте, здоровье, целях, питании и других аспектах жизни.</p>
+    </div>
+
+    <!-- Шаг 2 -->
+    <div class="step-card p-6 bg-white rounded-2xl shadow-lg transform transition hover:-translate-y-2 hover:shadow-xl duration-300">
+      <div class="mb-4 text-indigo-600">
+        <i data-lucide="brain-cog" class="w-8 h-8"></i>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">2. ИИ анализирует</h3>
+      <p class="text-gray-600">Алгоритмы GPT обрабатывают введённую информацию, находя смысловые связи и прогнозы.</p>
+    </div>
+
+    <!-- Шаг 3 -->
+    <div class="step-card p-6 bg-white rounded-2xl shadow-lg transform transition hover:-translate-y-2 hover:shadow-xl duration-300">
+      <div class="mb-4 text-indigo-600">
+        <i data-lucide="stars" class="w-8 h-8"></i>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">3. Получи прогноз</h3>
+      <p class="text-gray-600">Ты получаешь мотивирующий и персонализированный прогноз, который можно использовать как карту будущего.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cards-section">
+    <h2>Что ты узнаешь</h2>
+    <div class="cards-container">
+      <!-- Карточка Здоровья -->
+      <div class="card">
+        <div class="icon mb-4 text-indigo-600">
+          <i data-lucide="heart" class="w-8 h-8"></i> <!-- Иконка для здоровья -->
+        </div>
+        <h3>Здоровье</h3>
+        <p>ИИ подскажет, как может развиваться твоё физическое состояние.</p>
+      </div>
+  
+      <!-- Карточка Карьеры -->
+      <div class="card">
+        <div class="icon mb-4 text-indigo-600">
+          <i data-lucide="briefcase" class="w-8 h-8"></i> <!-- Иконка для карьеры -->
+        </div>
+        <h3>Карьера</h3>
+        <p>Получишь прогноз, куда может привести твой профессиональный путь.</p>
+      </div>
+  
+      <!-- Карточка Образа жизни -->
+      <div class="card">
+        <div class="icon mb-4 text-indigo-600">
+          <i data-lucide="activity" class="w-8 h-8"></i> <!-- Иконка для образа жизни -->
+        </div>
+        <h3>Образ жизни</h3>
+        <p>Анализ привычек покажет, как они влияют на твоё будущее.</p>
+      </div>
+  
+      <!-- Карточка Питания -->
+      <div class="card">
+        <div class="icon mb-4 text-indigo-600">
+          <i data-lucide="coffee" class="w-8 h-8"></i> <!-- Иконка для питания -->
+        </div>
+        <h3>Питание</h3>
+        <p>Питание — ключ к здоровью. Узнай, что стоит изменить.</p>
+      </div>
+  
+      <!-- Карточка Распорядка дня -->
+      <div class="card">
+        <div class="icon mb-4 text-indigo-600">
+          <i data-lucide="clock" class="w-8 h-8"></i> <!-- Иконка для распорядка дня -->
+        </div>
+        <h3>Распорядок дня</h3>
+        <p>ИИ оценит твою продуктивность и предложит улучшения.</p>
+      </div>
+  
+      <!-- Карточка Целей -->
+      <div class="card">
+        <div class="icon mb-4 text-indigo-600">
+          <i data-lucide="target" class="w-8 h-8"></i> <!-- Иконка для целей -->
+        </div>
+        <h3>Цели</h3>
+        <p>Мы покажем, насколько твои цели реалистичны и достижимы.</p>
+      </div>
+  
+      <!-- Карточка Социальных связей -->
+      <div class="card">
+        <div class="icon mb-4 text-indigo-600">
+          <i data-lucide="users" class="w-8 h-8"></i> <!-- Иконка для социальных связей -->
+        </div>
+        <h3>Социальные связи</h3>
+        <p>Оцени, как окружение влияет на твоё развитие и настроение.</p>
+      </div>
+  
+      <!-- Карточка Будущего -->
+      <div class="card">
+        <div class="icon mb-4 text-indigo-600">
+          <i data-lucide="sun" class="w-8 h-8"></i> <!-- Иконка для будущего -->
+        </div>
+        <h3>Будущее</h3>
+        <p>Итоговый прогноз соберёт всё воедино и покажет возможный путь.</p>
+      </div>
+    </div>
+  </section>
+
+    <section class="forecast py-16 bg-gray-50">
+        <div class="max-w-4xl mx-auto text-center px-4">
+          <h2 class="text-4xl font-bold text-gray-800 mb-4">Визуальный прогноз</h2>
+          <p class="text-gray-600 text-lg mb-10">
+            После прохождения анкеты ты получишь не только текстовый прогноз, но и наглядную <strong>визуализацию твоих привычек</strong> — график, показывающий, как твой образ жизни влияет на здоровье, продуктивность, настроение и другие сферы.
+          </p>
+        </div>
+      
+        <div class="max-w-3xl mx-auto px-4">
+          <canvas id="lifeChart" height="200"></canvas>
+          <p class="text-center text-sm text-gray-500 italic mt-4">
+            Это пример графика. Твой будет уникален.
+          </p>
+        </div>
+      </section>
+      
+      <!-- Подключаем Chart.js -->
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      
+      <script>
+        const ctx = document.getElementById('lifeChart').getContext('2d');
+        const lifeChart = new Chart(ctx, {
+          type: 'radar',
+          data: {
+            labels: ['Здоровье', 'Энергия', 'Фокус', 'Настроение', 'Продуктивность', 'Устойчивость'],
+            datasets: [{
+              label: 'Пример прогноза',
+              data: [65, 75, 60, 80, 70, 66],
+              fill: true,
+              backgroundColor: 'rgba(99, 102, 241, 0.2)',
+              borderColor: 'rgba(99, 102, 241, 1)',
+              pointBackgroundColor: 'rgba(99, 102, 241, 1)'
+            }]
+          },
+          options: {
+  responsive: true,
+  elements: {
+    line: {
+      borderWidth: 2
+    }
+  },
+  plugins: {
+    legend: {
+      position: 'top'
+    },
+    tooltip: {
+      enabled: true
+    }
+  },
+  scales: {
+    r: {
+      beginAtZero: true,
+      suggestedMax: 100,
+      pointLabels: {
+        font: {
+          size: 14,           // размер шрифта
+          weight: 'bold'      // жирность
+        },
+        color: '#333'          // цвет текста
+      },
+      ticks: {
+        display: false        // скрываем круговые подписи с цифрами (по желанию)
+      }
+    }
+  }
+}
+        });
+      </script>
+
+<section class="cta enhanced-cta">
+  <h2>Готов узнать своё будущее?</h2>
+  <p class="cta-subtitle">Ответь на несколько простых вопросов — и получи персональный прогноз уже сейчас.</p>
+  <a href="/form" class="btn">
+    Начать <i data-lucide="arrow-right" class="inline-icon"></i>
+  </a>
+</section>
+
+  <script>
+    // Инициализация иконок Lucide
+    lucide.createIcons();
+  </script>
+
 </body>
 </html>
-<header class="hero">
-    <h1>AI-прорицатель</h1>
-    <p>Твой личный ИИ, предсказывающий будущее на основе образа жизни</p>
-</header>
-
-<section class="how-it-works">
-    <h2>Как работает сервис</h2>
-    <ol>
-        <li>1. Ты заполняешь анкету</li>
-        <li>2. ИИ анализирует твой образ жизни</li>
-        <li>3. Получаешь персональный прогноз будущего</li>
-    </ol>
-</section>
-
-<section class="cards">
-    <h2>Что мы спрашиваем</h2>
-    <div class="card-grid">
-        <div class="card"><h3>Возраст</h3><p>Учитываем этап жизни</p></div>
-        <div class="card"><h3>Питание</h3><p>Как ты питаешься</p></div>
-        <div class="card"><h3>Цели</h3><p>Чего хочешь достичь</p></div>
-        <div class="card"><h3>Распорядок</h3><p>Твой день</p></div>
-        <div class="card"><h3>Здоровье</h3><p>Физическое и ментальное</p></div>
-        <div class="card"><h3>Социальные связи</h3><p>С кем ты общаешься</p></div>
-    </div>
-</section>
-
-<section class="cta">
-    <h2>Готов узнать своё будущее?</h2>
-    <a href="/form" class="btn">Начать</a>
-</section>
-{% endblock %}
