@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header class="hero">
+    <h1>AI-прорицатель</h1>
+    <p>Твой личный ИИ, предсказывающий будущее на основе образа жизни</p>
+</header>
+
+<section class="how-it-works">
+    <h2>Как работает сервис</h2>
+    <ol>
+        <li>1. Ты заполняешь анкету</li>
+        <li>2. ИИ анализирует твой образ жизни</li>
+        <li>3. Получаешь персональный прогноз будущего</li>
+    </ol>
+</section>
+
+<section class="cards">
+    <h2>Что мы спрашиваем</h2>
+    <div class="card-grid">
+        <div class="card"><h3>Возраст</h3><p>Учитываем этап жизни</p></div>
+        <div class="card"><h3>Питание</h3><p>Как ты питаешься</p></div>
+        <div class="card"><h3>Цели</h3><p>Чего хочешь достичь</p></div>
+        <div class="card"><h3>Распорядок</h3><p>Твой день</p></div>
+        <div class="card"><h3>Здоровье</h3><p>Физическое и ментальное</p></div>
+        <div class="card"><h3>Социальные связи</h3><p>С кем ты общаешься</p></div>
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Готов узнать своё будущее?</h2>
+    <a href="/form" class="btn">Начать</a>
+</section>
+{% endblock %}
