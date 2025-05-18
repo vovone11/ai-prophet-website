@@ -187,6 +187,7 @@ section {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
     width: 280px;
     transition: transform 0.2s, box-shadow 0.2s;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
   }
   
   .card:hover {
@@ -197,12 +198,12 @@ section {
   .card h3 {
     font-size: 1.3rem;
     margin-bottom: 0.75rem;
-    color: black
+    color:white
   }
   
   .card p {
     font-size: 1rem;
-    color: #444;
+    color: whitesmoke;
   }
 
   .enhanced-cta {

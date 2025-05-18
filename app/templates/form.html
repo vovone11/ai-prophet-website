@@ -7,39 +7,89 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style-form.css" />
     <script>
+        function goToStep(step) {
+            // Скрыть все шаги
+            for (let i = 1; i <= 10; i++) {
+                const el = document.getElementById(`question${i}`);
+                if (el) el.classList.add("hidden");
+            }
+
+            // Показать текущий
+            const current = document.getElementById(`question${step}`);
+            if (current) current.classList.remove("hidden");
+
+            // Обновить прогресс
+            currentStep = step;
+            const hasSubscription = document.getElementById("subscriptionCheckbox").checked;
+            const totalSteps = hasSubscription ? 10 : 7;
+            updateProgressBar(currentStep, totalSteps);
+        }       
+        
+        function handleAfterSeventh() {
+            document.getElementById("question7").classList.add("hidden");
+
+            const hasSubscription = document.getElementById("subscriptionCheckbox").checked;
+
+            if (hasSubscription) {
+                goToStep(8); // начинаем платные вопросы поочерёдно
+            } else {
+                submitForm(); // показываем результат сразу
+            }
+        }
+
         // Функция для перехода между вопросами
-        function nextQuestion(currentQuestion, nextQuestion) {
-            document.getElementById(currentQuestion).classList.add('hidden'); // скрыть текущий вопрос
-            document.getElementById(nextQuestion).classList.remove('hidden'); // показать следующий вопрос
+        function nextQuestion(currentQuestionId, nextQuestionId) {
+            document.getElementById(currentQuestionId).classList.add('hidden');
+            const nextEl = document.getElementById(nextQuestionId);
+            nextEl.classList.remove('hidden');
+
+            currentStep++;
+            updateProgressBar(currentStep, totalSteps);
+
+            nextEl.scrollIntoView({ behavior: 'smooth' });
         }
 
         // Отправка формы
         function submitForm() {
-            alert("Ваши ответы успешно отправлены!");
-            document.getElementById("surveyForm").reset(); // Очистить форму
+        // Скрываем форму
+            document.getElementById("surveyForm").classList.add("hidden");
+
+            // Показываем блок сценариев
+            document.getElementById("futureScenarios").classList.remove("hidden");
+
+            // Можно также отправить данные на сервер здесь, если потребуется
         }
-         function unlockExtendedForm() {
-        document.getElementById('question8').classList.remove('hidden');
+        function unlockExtendedForm() {
+             document.getElementById('question8').classList.remove('hidden');
          }
-       function showScenarios() {
-        document.getElementById("surveyForm").classList.add("hidden");
-        document.getElementById("futureScenarios").classList.remove("hidden");
+        function showScenarios() {
+            document.getElementById("surveyForm").classList.add("hidden");
+            document.getElementById("futureScenarios").classList.remove("hidden");
         }
 
         function handleSubscription() {
-        // Здесь позже можно подключить настоящую платёжную систему
-         alert("Спасибо за покупку подписки! Расширенные вопросы теперь доступны.");
+            alert("Спасибо за покупку подписки! Расширенные вопросы теперь доступны.");
 
-        // Скрываем блок подписки
-        document.getElementById('subscriptionBlock').classList.add('hidden');
+            // Скрываем блок подписки
+            document.getElementById('subscriptionBlock').classList.add('hidden');
 
-        // Показываем форму
-        document.getElementById('surveyForm').classList.remove('hidden');
+            // Показываем форму и сбрасываем видимость всех вопросов
+            document.getElementById('surveyForm').classList.remove('hidden');
 
-        // Активируем расширенные вопросы
-        unlockExtendedForm(); // Функция уже определена ранее
-}
+            // Сброс всех вопросов, кроме первого
+            for (let i = 1; i <= 10; i++) {
+                const el = document.getElementById(`question${i}`);
+                if (el) el.classList.add("hidden");
+            }
 
+            // Показываем первый вопрос
+            document.getElementById('question1').classList.remove('hidden');
+
+            // Сброс прогресса
+            currentStep = 1;
+            totalSteps = 10;
+            updateProgressBar(currentStep, totalSteps);
+        }
     </script>
 </head>
 
@@ -179,7 +229,7 @@
                     <input type="text" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Ваш ответ (например: 'У меня крепкие отношения с семьей, но я немного отдалился от друзей.')">
                 </div>
                 <div class="mt-4 text-right">
-                    <button type="button" onclick="nextQuestion('question7', 'question8')" class="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition duration-200">Далее</button>
+                    <button type="button" onclick="handleAfterSeventh()" class="...">Продолжить</button>
                 </div>
             </div>
             <!-- Вопрос 8: Финансы -->
@@ -226,9 +276,24 @@
                     <button type="submit" onclick="submitForm()" class="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition">Отправить</button>
                 </div>
             </div>
+
+            <div class="w-full bg-gray-200 rounded-full h-4 mb-6">
+                <div id="progressBar" class="bg-indigo-600 h-4 rounded-full transition-all duration-500" style="width: 0%"></div>
+              </div>
         </form>
+
+        <script>
+            let currentStep = 1;
+            let totalSteps = 10;
+        
+            function updateProgressBar(currentStep, totalSteps) {
+                const progress = (currentStep / totalSteps) * 100;
+                document.getElementById("progressBar").style.width = `${progress}%`;
+            }
+        </script>
+
             <!-- Блок сценариев будущего -->
-            <div id="futureScenarios" class="hidden max-w-4xl mx-auto bg-white mt-10 p-8 rounded-lg shadow-lg">
+            <div id="futureScenarios" class="hidden">
                 <h2 class="text-2xl font-bold text-indigo-600 mb-4">Твои возможные сценарии будущего</h2>
 
                 <div class="mb-4">
